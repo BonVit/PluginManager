@@ -30,12 +30,8 @@ class PluginManagerService : Service(), ConnectionListener, PluginListener {
         )
 
         // Preset plugin
-        pluginManager.addPlugin(
-            Plugin(
-                "com.vitaliibonar.plugintoast",
-                "com.vitaliibonar.plugintoast.PluginToastService"
-            )
-        )
+        pluginManager.addPlugin(Plugin("com.vitaliibonar.plugintoast", "com.vitaliibonar.plugintoast.PluginToastService"))
+        pluginManager.addPlugin(Plugin("com.vitaliibonar.pluginbeep", "com.vitaliibonar.pluginbeep.PluginBeepService"))
 
         pluginManager.plugins.forEach {
             if (it.isRunning) {

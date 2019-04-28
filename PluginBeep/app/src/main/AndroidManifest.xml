@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+          package="com.vitaliibonar.pluginbeep">
+
+    <application tools:ignore="AllowBackup,GoogleAppIndexingWarning,MissingApplicationIcon">
+        <service android:name="com.vitaliibonar.pluginbeep.PluginBeepService">
+            <intent-filter>
+                <action android:name="com.vitaliibonar.pluginbeep.PluginBeepService"/>
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
