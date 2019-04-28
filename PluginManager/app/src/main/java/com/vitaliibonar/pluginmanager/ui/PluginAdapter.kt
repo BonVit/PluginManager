@@ -29,4 +29,31 @@ class PluginAdapter : RecyclerView.Adapter<PluginHolder>() {
         notifyDataSetChanged()
     }
 
+    fun removePlugin(plugin: Plugin) {
+        val index = plugins.indexOf(plugin)
+        if (index >= 0) {
+            plugins.removeAt(index)
+            notifyItemRemoved(index)
+        }
+    }
+
+    fun updatePlugin(plugin: Plugin) {
+        val index = plugins.indexOf(plugin)
+        if (index >= 0) {
+            plugins[index] = plugin
+            notifyItemChanged(index)
+        }
+    }
+
+    fun addPlugin(plugin: Plugin) {
+        val index = plugins.indexOf(plugin)
+        if (index >= 0) {
+            plugins[index] = plugin
+            notifyItemChanged(index)
+        } else {
+            plugins.add(plugin)
+            notifyItemInserted(plugins.size - 1)
+        }
+    }
+
 }

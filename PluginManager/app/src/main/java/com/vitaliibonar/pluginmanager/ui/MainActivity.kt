@@ -42,15 +42,15 @@ class MainActivity : AppCompatActivity(), PluginListener {
     }
 
     override fun onPluginAdded(plugin: Plugin) {
-        pluginAdapter.updatePlugins(ArrayList(pluginManager.plugins))
+        pluginAdapter.addPlugin(plugin)
     }
 
     override fun onPluginRemoved(plugin: Plugin) {
-        pluginAdapter.updatePlugins(ArrayList(pluginManager.plugins))
+        pluginAdapter.removePlugin(plugin)
     }
 
     override fun onPluginChanged(plugin: Plugin) {
-        pluginAdapter.updatePlugins(ArrayList(pluginManager.plugins))
+        pluginAdapter.updatePlugin(plugin)
     }
 
     private fun initList() {
