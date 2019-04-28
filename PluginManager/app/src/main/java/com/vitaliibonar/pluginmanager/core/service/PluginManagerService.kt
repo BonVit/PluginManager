@@ -2,10 +2,12 @@ package com.vitaliibonar.pluginmanager.core.service
 
 import android.app.Service
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.IBinder
 import com.vitaliibonar.pluginmanager.core.ServiceLocator
 import com.vitaliibonar.pluginmanager.core.model.Plugin
 import com.vitaliibonar.pluginmanager.core.plugin.PluginListener
+import com.vitaliibonar.pluginmanager.core.receiver.PluginManagerReceiver
 import com.vitaliibonar.pluginmanager.core.utils.startForegroundNotification
 import com.vitaliibonar.pluginmanager.core.utils.stopForegroundNotification
 
@@ -17,6 +19,7 @@ class PluginManagerService : Service(), ConnectionListener, PluginListener {
         connectionManager
     }
     private val pluginManager = ServiceLocator.pluginManager
+    private val pluginManagerReceiver = PluginManagerReceiver()
 
     override fun onBind(p0: Intent?): IBinder? {
         return null
@@ -30,7 +33,12 @@ class PluginManagerService : Service(), ConnectionListener, PluginListener {
         )
 
         // Preset plugin
-        pluginManager.addPlugin(Plugin("com.vitaliibonar.plugintoast", "com.vitaliibonar.plugintoast.PluginToastService"))
+        pluginManager.addPlugin(
+            Plugin(
+                "com.vitaliibonar.plugintoast",
+                "com.vitaliibonar.plugintoast.PluginToastService"
+            )
+        )
         pluginManager.addPlugin(Plugin("com.vitaliibonar.pluginbeep", "com.vitaliibonar.pluginbeep.PluginBeepService"))
 
         pluginManager.plugins.forEach {
@@ -41,6 +49,8 @@ class PluginManagerService : Service(), ConnectionListener, PluginListener {
 
         pluginManager.addListener(this)
 
+        registerReceiver(pluginManagerReceiver, IntentFilter(PluginManagerReceiver.INTENT_ACTION))
+
         return super.onStartCommand(intent, flags, startId)
     }
 
@@ -48,6 +58,7 @@ class PluginManagerService : Service(), ConnectionListener, PluginListener {
         stopForegroundNotification()
         connectionManager.disconnectAll()
         pluginManager.removeListener(this)
+        unregisterReceiver(pluginManagerReceiver)
         super.onDestroy()
     }
 
