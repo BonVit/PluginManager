@@ -1,4 +1,4 @@
-package com.vitaliibonar.pluginmanager.ui
+package com.vitaliibonar.pluginmanager.ui.main.list
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

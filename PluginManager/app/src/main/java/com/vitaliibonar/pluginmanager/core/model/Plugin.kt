@@ -1,6 +1,11 @@
 package com.vitaliibonar.pluginmanager.core.model
 
-data class Plugin(var packageName: String, var className: String, var isRunning: Boolean = false, var error: Boolean = false) {
+data class Plugin(
+    val packageName: String,
+    val className: String,
+    var isRunning: Boolean = false,
+    var error: Boolean = false
+) {
     override fun equals(other: Any?): Boolean {
         return if (other is Plugin) {
             packageName == other.packageName && className == other.className

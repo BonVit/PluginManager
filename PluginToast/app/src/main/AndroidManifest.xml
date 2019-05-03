@@ -3,11 +3,16 @@
           package="com.vitaliibonar.plugintoast">
 
     <application tools:ignore="AllowBackup,GoogleAppIndexingWarning,MissingApplicationIcon">
+
+        <meta-data android:name="PLUGIN_COMPONENT_NAME"
+                   android:value="com.vitaliibonar.plugintoast.PluginToastService"/>
+
         <service android:name="com.vitaliibonar.plugintoast.PluginToastService">
             <intent-filter>
-                <action android:name="com.vitaliibonar.plugintoast.PluginToastService" />
+                <action android:name="com.vitaliibonar.plugintoast.PluginToastService"/>
             </intent-filter>
         </service>
+
     </application>
 
 </manifest>

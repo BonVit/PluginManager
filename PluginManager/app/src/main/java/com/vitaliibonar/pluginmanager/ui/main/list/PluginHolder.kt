@@ -1,4 +1,4 @@
-package com.vitaliibonar.pluginmanager.ui
+package com.vitaliibonar.pluginmanager.ui.main.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -48,7 +48,13 @@ class PluginHolder private constructor(view: View) : RecyclerView.ViewHolder(vie
 
     companion object {
         fun inflate(parent: ViewGroup?): PluginHolder {
-            return PluginHolder(LayoutInflater.from(parent?.context).inflate(R.layout.item_plugin, parent, false))
+            return PluginHolder(
+                LayoutInflater.from(parent?.context).inflate(
+                    R.layout.item_plugin,
+                    parent,
+                    false
+                )
+            )
         }
     }
 }

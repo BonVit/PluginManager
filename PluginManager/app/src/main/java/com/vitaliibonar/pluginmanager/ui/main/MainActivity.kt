@@ -1,13 +1,17 @@
-package com.vitaliibonar.pluginmanager.ui
+package com.vitaliibonar.pluginmanager.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.vitaliibonar.pluginmanager.R
 import com.vitaliibonar.pluginmanager.core.ServiceLocator
 import com.vitaliibonar.pluginmanager.core.model.Plugin
 import com.vitaliibonar.pluginmanager.core.plugin.PluginListener
 import com.vitaliibonar.pluginmanager.core.service.PluginManagerService
+import com.vitaliibonar.pluginmanager.ui.main.list.PluginAdapter
+import com.vitaliibonar.pluginmanager.ui.scan.ScanPluginsActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), PluginListener {
@@ -34,6 +38,20 @@ class MainActivity : AppCompatActivity(), PluginListener {
                 etClassName.setText("")
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if (id == R.id.item_search) {
+            startActivity(Intent(this, ScanPluginsActivity::class.java))
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onDestroy() {

@@ -5,7 +5,7 @@ import android.app.Service
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import com.vitaliibonar.pluginmanager.R
-import com.vitaliibonar.pluginmanager.ui.MainActivity
+import com.vitaliibonar.pluginmanager.ui.main.MainActivity
 
 fun Service.startForegroundNotification(notificationId: Int, channelId: String, channelName: String) {
     createNotificationChannel(channelId, channelName)

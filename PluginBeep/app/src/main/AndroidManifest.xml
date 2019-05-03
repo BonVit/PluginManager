@@ -2,11 +2,16 @@
           package="com.vitaliibonar.pluginbeep">
 
     <application tools:ignore="AllowBackup,GoogleAppIndexingWarning,MissingApplicationIcon">
+
+        <meta-data android:name="PLUGIN_COMPONENT_NAME"
+                   android:value="com.vitaliibonar.pluginbeep.PluginBeepService"/>
+
         <service android:name="com.vitaliibonar.pluginbeep.PluginBeepService">
             <intent-filter>
                 <action android:name="com.vitaliibonar.pluginbeep.PluginBeepService"/>
             </intent-filter>
         </service>
+
     </application>
 
 </manifest>
